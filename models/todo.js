@@ -14,12 +14,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Todo.init({
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     name: DataTypes.STRING,
     done: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Todo',
+    timestamps: false
   });
+  Todo.associate = function(models) {
+
+  };
   return Todo;
 };
